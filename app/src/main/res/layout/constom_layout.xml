@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+   <top.douruanliang.fragmentlazyapp.view.InvalidTextView
+       android:id="@+id/miv_text"
+       android:layout_width="400dp"
+       android:layout_height="200dp"
+       android:gravity="center"
+       android:textSize="16sp"
+       android:layout_gravity="center_horizontal"
+       android:background="@android:color/holo_orange_dark"/>
+   <TextView
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:text="我们是租的房子"/>
+   <top.douruanliang.fragmentlazyapp.view.RectView
+       android:id="@+id/mView_id"
+       android:layout_width="200dp"
+       android:layout_height="200dp"
+       android:layout_marginTop="50dp"
+        android:padding="20dp"/>
+</LinearLayout>
