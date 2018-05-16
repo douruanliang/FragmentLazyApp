@@ -136,7 +136,7 @@ public abstract class BaseDao <T> implements IBaseDao<T> {
 
     /**
      * 不暴露 模块耦合
-     * @param entity
+     * @param entity  将要操作的DAO
      * @param sqLiteDatabase
      * @return
      */

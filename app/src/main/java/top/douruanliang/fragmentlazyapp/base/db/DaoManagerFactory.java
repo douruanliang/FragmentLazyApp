@@ -3,6 +3,8 @@ package top.douruanliang.fragmentlazyapp.base.db;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Environment;
 
+import java.io.File;
+
 
 /**
  * 作者：dourl on 2018/5/14 21:25
@@ -14,6 +16,19 @@ public class DaoManagerFactory {
     //真正操作数据库的
     private SQLiteDatabase sqLiteDatabase;
 
+    //私有的构造方法
+    private  DaoManagerFactory(File file) {
+        this.sqliteDatabasePath = file.getAbsolutePath();
+        openDatabase();
+    }
+
+    public static DaoManagerFactory instanse=
+            new DaoManagerFactory(new File(Environment.getExternalStorageDirectory(),"logic.db"));
+
+    public static  DaoManagerFactory getInstance()
+    {
+        return  instanse;
+    }
     public DaoManagerFactory(){
         sqliteDatabasePath= Environment.getExternalStorageDirectory().getAbsolutePath()+"/teacher.db";
         openDatabase();
@@ -27,13 +42,22 @@ public class DaoManagerFactory {
         this.sqLiteDatabase=SQLiteDatabase.openOrCreateDatabase(sqliteDatabasePath,null);
     }
 
+    /**
+     *
+     * @param clazz   操作数据类（xxxDTO）
+     * @param entityClass  实体类 xxx
+     * @param <T>
+     * @param <M>
+     * @return
+     */
     public  synchronized  <T extends BaseDao<M>,M> T getDataHelper(Class<T> clazz,Class<M> entityClass)
     {
         BaseDao baseDao=null;
         try {
              //通过反射获取实例对象
             baseDao=clazz.newInstance();
-           // baseDao.init(entityClass,sqLiteDatabase);
+            //初始化表等
+            baseDao.init(entityClass,sqLiteDatabase);
         } catch (InstantiationException e) {
             e.printStackTrace();
         } catch (IllegalAccessException e) {
