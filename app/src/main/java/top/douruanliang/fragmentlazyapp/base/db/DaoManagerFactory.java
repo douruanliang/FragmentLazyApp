@@ -23,6 +23,7 @@ public class DaoManagerFactory {
     public static  DaoManagerFactory getInstance()
     {
         if(instanse == null){
+            // have a  problerm;
             File file = new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/teacher.db");
             instanse = new DaoManagerFactory(file);
         }
