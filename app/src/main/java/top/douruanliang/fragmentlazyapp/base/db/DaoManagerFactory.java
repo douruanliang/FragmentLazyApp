@@ -16,23 +16,22 @@ public class DaoManagerFactory {
     //真正操作数据库的
     private SQLiteDatabase sqLiteDatabase;
 
+
+    public static DaoManagerFactory instanse;
+        //    new DaoManagerFactory();
+
+    public static  DaoManagerFactory getInstance()
+    {
+        if(instanse == null){
+            File file = new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/teacher.db");
+            instanse = new DaoManagerFactory(file);
+        }
+        return  instanse;
+    }
     //私有的构造方法
     private  DaoManagerFactory(File file) {
         this.sqliteDatabasePath = file.getAbsolutePath();
         openDatabase();
-    }
-
-    public static DaoManagerFactory instanse=
-            new DaoManagerFactory(new File(Environment.getExternalStorageDirectory(),"logic.db"));
-
-    public static  DaoManagerFactory getInstance()
-    {
-        return  instanse;
-    }
-    public DaoManagerFactory(){
-        sqliteDatabasePath= Environment.getExternalStorageDirectory().getAbsolutePath()+"/teacher.db";
-        openDatabase();
-
     }
 
     /**
