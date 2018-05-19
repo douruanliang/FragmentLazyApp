@@ -2,6 +2,7 @@ package top.douruanliang.fragmentlazyapp.base.db;
 
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Environment;
+import android.util.Log;
 
 import java.io.File;
 
@@ -24,22 +25,33 @@ public class DaoManagerFactory {
     {
         if(instanse == null){
             // have a  problerm;
-            File file = new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/teacher.db");
-            instanse = new DaoManagerFactory(file);
+
+            instanse = new DaoManagerFactory();
         }
         return  instanse;
     }
     //私有的构造方法
-    private  DaoManagerFactory(File file) {
-        this.sqliteDatabasePath = file.getAbsolutePath();
-        openDatabase();
+    private  DaoManagerFactory() {
+
+        if( Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)){
+            this.sqliteDatabasePath = Environment.getExternalStorageDirectory().getAbsolutePath();
+
+        }else{
+             //提示
+            Log.i("DaoManagerFactory","无SD卡");
+            return;
+
+        }
+        File file = new File(sqliteDatabasePath,"/teacher.db");
+        openDatabase(file);
     }
 
     /**
      * 打开数据库没有则创建
      */
-    private void openDatabase() {
-        this.sqLiteDatabase=SQLiteDatabase.openOrCreateDatabase(sqliteDatabasePath,null);
+    private void openDatabase(File file) {
+
+        this.sqLiteDatabase=SQLiteDatabase.openOrCreateDatabase(file,null);
     }
 
     /**

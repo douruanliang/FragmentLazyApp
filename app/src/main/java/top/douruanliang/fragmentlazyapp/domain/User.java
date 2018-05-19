@@ -10,14 +10,13 @@ import top.douruanliang.fragmentlazyapp.base.db.annotation.DbTable;
 @DbTable("tb_user")
 public class User {
 
-    @DbFiled("tb_name")
+    @DbFiled("name")
     public String name;
-    @DbFiled("tb_password")
+    @DbFiled("password")
     public String password;
 
-    public User(String name, String password) {
-        this.name = name;
-        this.password = password;
+    public User() {
+
     }
 
     public String getName() {

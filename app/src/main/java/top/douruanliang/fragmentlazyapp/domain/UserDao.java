@@ -11,6 +11,7 @@ public class UserDao extends BaseDao {
 
     @Override
     public String createTable() {
+         //注意 字段要和类的属性一一对应，
         return "create table if not exists tb_user(name varchar(20),password varchar(10),age int)";
     }
 }
