@@ -42,6 +42,8 @@ public class DaoManagerFactory {
             return;
 
         }
+        //这里需要注意
+        //TODO
         File file = new File(sqliteDatabasePath,"/teacher.db");
         openDatabase(file);
     }
