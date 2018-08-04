@@ -1,15 +1,23 @@
 package top.douruanliang.fragmentlazyapp.view.activity;
 
 import android.app.Activity;
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.BitmapFactory;
+import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -53,24 +61,34 @@ public class CustomActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.constom_layout);
 
-
-        //添加按钮
+        //第一步：初始化
+        Notification.Builder builder = new Notification.Builder(this);
+        //第二步：构建点击之后的意图
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.baidu.com"));
+        //构造pendingdintent
+        PendingIntent pendingIntent = PendingIntent.getActivities(this, 0, new Intent[]{intent}, 0);
+        //第三步：设置通知栏的各种消息
+        builder.setSmallIcon(R.mipmap.ic_launcher);
+        builder.setContentIntent(pendingIntent);
+        builder.setAutoCancel(true);
+        builder.setLargeIcon(BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher));
+        builder.setContentText("Title");
+        builder.setContentText("内容");
+        builder.setSubText("text");
+        //第四步：通过NotificationManager来发出
+        NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+        notificationManager.notify(0, builder.build());
+        /*//添加按钮
         mbtnInsert = findViewById(R.id.btn_insert);
         //更新按钮
-        mbtnUpdate =  findViewById(R.id.btn_update);
-        //查询
-        mbtnQuery = findViewById(R.id.btn_query);
-        mbtnQuery.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent instent = new Intent();
-                instent.setClass(CustomActivity.this,Custom2Activity.class);
-                startActivity(instent);
-            }
-        });
+        mbtnUpdate =  findViewById(R.id.btn_update);*/
+
         //userBaseDao = DaoManagerFactory.getInstance().getDataHelper(UserDao.class,User.class);
         ViewPager viewPager = (ViewPager) findViewById(R.id.vp_main);
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_main);
+
+
+
         initToolBar();
         initFragment();
 
@@ -97,6 +115,12 @@ public class CustomActivity extends AppCompatActivity {
         toolbar.setTitle("douruanliang");
         // 将toolBar和actionBar进行关联
          setSupportActionBar(toolbar);
+
+         //想要的效果
+        ActionBar actionBar = getSupportActionBar();
+        if(actionBar !=null)
+            actionBar.setDisplayHomeAsUpEnabled(true);
+            actionBar.setHomeButtonEnabled(true);
         
     }
 
