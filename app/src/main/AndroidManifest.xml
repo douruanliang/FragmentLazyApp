@@ -4,7 +4,7 @@
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-
+    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
     <application
         android:name=".MvpApplication"
         android:allowBackup="true"
@@ -25,6 +25,7 @@
         </activity>
         <activity android:name=".view.activity.CustomActivity" />
         <activity android:name=".view.activity.Custom2Activity"></activity>
+        <activity android:name=".view.activity.LanguageActivity"></activity>
     </application>
 
 </manifest>

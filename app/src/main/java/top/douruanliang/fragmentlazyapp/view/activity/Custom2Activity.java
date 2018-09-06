@@ -1,12 +1,6 @@
 package top.douruanliang.fragmentlazyapp.view.activity;
 
-import android.app.Notification;
-import android.app.NotificationManager;
-import android.app.PendingIntent;
-import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -19,7 +13,6 @@ import android.view.Window;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import top.douruanliang.fragmentlazyapp.MainActivity;
 import top.douruanliang.fragmentlazyapp.R;
 import top.douruanliang.fragmentlazyapp.base.MyAdapter;
 import top.douruanliang.fragmentlazyapp.base.db.DividerItemDecoration;
@@ -36,34 +29,13 @@ public class Custom2Activity extends AppCompatActivity {
         getWindow().requestFeature(Window.FEATURE_CONTENT_TRANSITIONS);
         setContentView(R.layout.activity_custom2);
         getWindow().setExitTransition(new Fade());
-        CollapsingToolbarLayout collapsingToolbarLayout  = findViewById(R.id.ctl_layout);
-        collapsingToolbarLayout.setTitle("加班");
-        collapsingToolbarLayout.setExpandedTitleColor(Color.WHITE);
-        collapsingToolbarLayout.setCollapsedTitleTextColor(Color.YELLOW);
 
 
         initData();
         initView();
         initToolBar();
 
-        Notification.Builder builder = new Notification.Builder(this)
-                .setSmallIcon(R.mipmap.ic_launcher)
-                .setPriority(Notification.PRIORITY_DEFAULT)
-                .setCategory(Notification.CATEGORY_MESSAGE)
-                .setContentTitle("Headsup Notification")
-                .setContentText("I am a Headsup notification.");
 
-        Intent push = new Intent();
-        push.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        push.setClass(this, MainActivity.class);
-        PendingIntent pendingIntent = PendingIntent.getActivity(
-                this, 0, push, PendingIntent.FLAG_CANCEL_CURRENT);
-        builder.setContentText("Heads-Up Notification on Android 5.0")
-                .setFullScreenIntent(pendingIntent, true);
-
-        NotificationManager nm = (NotificationManager)
-                getSystemService(NOTIFICATION_SERVICE);
-        nm.notify(NOTIFICATION_ID_HEADSUP, builder.build());
 
 
     }
@@ -79,9 +51,6 @@ public class Custom2Activity extends AppCompatActivity {
         if(actionBar !=null)
             actionBar.setDisplayHomeAsUpEnabled(true);
            actionBar.setHomeButtonEnabled(true);
-
-
-
 
     }
     // 绑定数据到RecyclerView

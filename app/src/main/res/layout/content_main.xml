@@ -5,18 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="top.douruanliang.fragmentlazyapp.MainActivity"
-    tools:showIn="@layout/activity_main">
+    tools:context="top.douruanliang.fragmentlazyapp.MainActivity2"
+    tools:showIn="@layout/activity_main2">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal">
-        <Button
-            android:id="@+id/mbtn_id"
-            android:text="我自定义view一"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+
 
     </LinearLayout>
 

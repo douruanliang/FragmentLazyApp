@@ -1,4 +1,4 @@
-package top.douruanliang.fragmentlazyapp;
+package top.douruanliang.fragmentlazyapp.collect;
 
 import android.app.Activity;
 import android.graphics.Color;
@@ -17,9 +17,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import top.douruanliang.fragmentlazyapp.collect.DividerItemDecoration;
-import top.douruanliang.fragmentlazyapp.collect.MineRadioAdapter;
-import top.douruanliang.fragmentlazyapp.collect.MyLiveList;
+import top.douruanliang.fragmentlazyapp.R;
 
 
 /**
@@ -57,8 +55,6 @@ public class MainActivity extends Activity implements View.OnClickListener, Mine
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-
-
         initView();
         initData();
         initListener();
