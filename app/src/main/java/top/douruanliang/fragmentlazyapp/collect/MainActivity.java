@@ -76,8 +76,8 @@ public class MainActivity extends Activity implements View.OnClickListener, Mine
             myLiveList.setTitle("这是第" + i + "个条目");
             myLiveList.setSource("来源" + i);
             mList.add(myLiveList);
-            mRadioAdapter.notifyAdapter(mList, false);
         }
+        mRadioAdapter.notifyAdapter(mList, false);
     }
 
 
