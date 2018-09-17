@@ -79,9 +79,17 @@ public class MainActivity extends Activity implements View.OnClickListener, Mine
             MyLiveList myLiveList = new MyLiveList();
             myLiveList.setTitle("这是第" + i + "个条目");
             myLiveList.setSource("来源" + i);
+            myLiveList.setCountTime(Long.valueOf(i*1000));
             mList.add(myLiveList);
-            mRadioAdapter.notifyAdapter(mList, false);
         }
+
+        MyLiveList myLiveList = new MyLiveList();
+        myLiveList.setTitle("这是第+ 最后+ 个条目");
+        myLiveList.setSource("来源");
+        myLiveList.setCountTime(Long.valueOf(200*1000));
+        mList.add(myLiveList);
+        //我记得我已经改过这里的代码了那个傻逼该我回咯偶
+        mRadioAdapter.notifyAdapter(mList, false);
     }
 
 

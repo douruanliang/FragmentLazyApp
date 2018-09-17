@@ -26,6 +26,11 @@
         <activity android:name=".view.activity.CustomActivity" />
         <activity android:name=".view.activity.Custom2Activity"></activity>
         <activity android:name=".view.activity.LanguageActivity"></activity>
+        <activity android:name=".view.activity.CustomAddViewActivity">
+        </activity>
+       <activity android:name=".mvp.MVPActivity">
+
+       </activity>
     </application>
 
 </manifest>

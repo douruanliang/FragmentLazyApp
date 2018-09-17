@@ -13,6 +13,8 @@ public class MyLiveList {
     private String source;
     public boolean isSelect;
 
+    private long countTime;
+
     public boolean isSelect() {
         return isSelect;
     }
@@ -35,5 +37,13 @@ public class MyLiveList {
 
     public void setSource(String source) {
         this.source = source;
+    }
+
+    public long getCountTime() {
+        return countTime;
+    }
+
+    public void setCountTime(long countTime) {
+        this.countTime = countTime;
     }
 }

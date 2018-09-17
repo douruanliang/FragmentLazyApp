@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,6 +17,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import top.douruanliang.fragmentlazyapp.R;
+import top.douruanliang.fragmentlazyapp.view.TimerTextView;
 
 
 /**
@@ -93,6 +95,13 @@ public class MineRadioAdapter extends RecyclerView.Adapter<MineRadioAdapter.View
                 mOnItemClickListener.onItemClickListener(holder.getAdapterPosition(), mMyLiveList);
             }
         });
+        holder.mCountDown.setOnCountDownCallBack(new TimerTextView.OnCountDownCallBack() {
+            @Override
+            public void onFinish() {
+                Toast.makeText(context,"交易结束",Toast.LENGTH_SHORT);
+            }
+        });
+        holder.mCountDown.setTime(myLive.getCountTime());
     }
 
     public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
@@ -117,6 +126,8 @@ public class MineRadioAdapter extends RecyclerView.Adapter<MineRadioAdapter.View
         TextView mTvTitle;
         @BindView(R.id.tv_source)
         TextView mTvSource;
+        @BindView(R.id.count_down)
+        TimerTextView mCountDown;
         @BindView(R.id.root_view)
         RelativeLayout mRootView;
         @BindView(R.id.item)
@@ -124,7 +135,7 @@ public class MineRadioAdapter extends RecyclerView.Adapter<MineRadioAdapter.View
 
         public ViewHolder(View itemView) {
             super(itemView);
-            ButterKnife.bind(this,itemView);
+            ButterKnife.bind(this, itemView);
         }
     }
 
